@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns="http://www.mulesoft.org/schema/mule/core"
+	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd">
+	<http:listener-config name="HTTP_Listener_config" doc:name="HTTP Listener config" doc:id="51e6b5e9-bed4-420c-9297-d6e8382639f6" >
+		<http:listener-connection host="0.0.0.0" port="8081" />
+	</http:listener-config>
+	<flow name="maven-deployment-pocFlow" doc:id="e39e4eb0-18c9-4af0-a9c0-c9c06adb0533" >
+		<http:listener doc:name="Listener" doc:id="8caad33e-36ae-4c2a-8760-29f0d0a57851" config-ref="HTTP_Listener_config" path="/maventest"/>
+		<logger level="INFO" doc:name="Logger" doc:id="ebef14b2-665d-4723-b148-2f058131dd2c" message="Request for maven deployment POC"/>
+		<set-payload value="POC is successfully deployed to Anypoint platform using Maven(Jenkins)" doc:name="Set Payload" doc:id="c3b8b2b1-86e5-4cfc-9b5b-4f80b3f31031" />
+		<logger level="INFO" doc:name="Logger" doc:id="3813472f-7b77-4ea8-a74f-6717bc4e1f25" message="POC is successfully deployed to Anypoint platform using Maven(Jenkins)"/>
+	</flow>
+</mule>
